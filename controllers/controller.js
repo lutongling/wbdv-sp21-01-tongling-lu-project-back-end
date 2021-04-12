@@ -6,6 +6,12 @@ module.exports = (app) => {
         res.send(products)
     }
 
+    const findProductById = (req, res) => {
+        const productId = req.params['productId']
+        const product = productService.findProductById(productId)
+        res.send(product)
+    }
     app.get('/api/products', findAllProducts)
+    app.get('/api/products/:productId', findProductById)
 
 }
