@@ -4,6 +4,10 @@ const findAllUsers = () => {
     return usersModel.find()
 }
 
+const findUserById = (uid) => {
+    return usersModel.findById(uid)
+}
+
 const findUserByUsername = (username) => {
     return usersModel.find({username: username})
 }
@@ -20,12 +24,13 @@ const createUser = (user) => {
 }
 
 const updateUser = (userId, newUser) => {
-    return usersModel.updateOne(
+    return usersModel.findOneAndUpdate(
         {_id: userId}, {$set: newUser})
 }
 
 module.exports = {
     findAllUsers,
+    findUserById,
     findUserByUsername,
     findUserByCredentials,
     createUser,
