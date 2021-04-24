@@ -5,6 +5,7 @@ const productsSchema = mongoose.Schema({
     price: String,
     brand: String,
     rating: Number,
+    reviews: String,
     description: String
 }, {collection: "products"})
 

@@ -31,7 +31,8 @@ app.use(function (req, res, next) {
 
 
 
-require("./controllers/controller")(app)
+require("./controllers/products-controller")(app)
 require("./controllers/users-controller")(app)
+require("./controllers/orders-controller")(app)
 
 app.listen(7000);
