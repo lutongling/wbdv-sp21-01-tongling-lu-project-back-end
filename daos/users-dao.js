@@ -24,8 +24,16 @@ const createUser = (user) => {
 }
 
 const updateUser = (userId, newUser) => {
-    return usersModel.findOneAndUpdate(
-        {_id: userId}, {$set: newUser})
+    usersModel.findOneAndUpdate({_id: userId}, {$set: newUser}, {new:true}, function(err,doc) {
+        if (err) { throw err; }
+        else { console.log("Updated"); }
+
+    });
+
+    // console.log(newUser.username)
+    // console.log(userId)
+    // return usersModel.findOneAndUpdate(
+    //     {_id: userId}, {$set: {username:newUser.username}})
 }
 
 module.exports = {

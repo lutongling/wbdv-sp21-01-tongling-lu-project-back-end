@@ -59,13 +59,14 @@ module.exports = (app) => {
         res.send(200)
     }
 
-    // const updateUser = (req, res) => {
-    //     // const currentUserId = req.body._id;
-    //     const currentUser = req.body;
-    //     // const currentUser = req.session["profile"]
-    //     userDao.updateUser(currentUser._id, currentUser).save()
-    //     res.send(currentUser)
-    // }
+    const updateUser = (req, res) => {
+        // const currentUserId = req.body._id;
+        const currentUser = req.body;
+
+        // const currentUser = req.session["profile"]
+        userDao.updateUser(req.params["uid"], currentUser)
+        res.send(currentUser)
+    }
 
     app.get("/api/users/register", findAllUsers)
     app.get("/api/users/:uid", findUserById)
@@ -75,6 +76,6 @@ module.exports = (app) => {
     app.post("/api/users/logout", logout)
 
     // how to do?
-    // app.put("/api/users/profile", updateUser)
+    app.put("/api/users/:uid", updateUser)
 
 }
