@@ -9,6 +9,14 @@ module.exports = (app) => {
             })
     }
 
+    const findOrdersByUserId = (req, res) => {
+        const uid = req.params['uid']
+        orderDao.findOrdersByUserId(uid)
+            .then((orders) =>{
+                res.send(orders)
+            })
+    }
+
     const createOrder = (req, res) => {
         const order = req.body
         orderDao.createOrder(order)
@@ -17,6 +25,8 @@ module.exports = (app) => {
             })
     }
 
+
     app.get("/api/orders", findAllOrders)
+    app.get("/api/orders/:uid", findOrdersByUserId)
     app.post("/api/orders", createOrder)
 }

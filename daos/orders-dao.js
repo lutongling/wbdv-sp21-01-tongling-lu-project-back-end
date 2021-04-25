@@ -8,8 +8,8 @@ const findOrderById = (oid) => {
     return ordersModel.findById(oid)
 }
 
-const findOrderByUsername = (username) => {
-    return ordersModel.find({username: username})
+const findOrdersByUserId = (uid) => {
+    return ordersModel.find({user: uid})
 }
 
 // const findUserByCredentials = (credentials) => {
@@ -39,6 +39,6 @@ const createOrder = (order) => {
 module.exports = {
     findAllOrders,
     findOrderById,
-    findOrderByUsername,
+    findOrdersByUserId,
     createOrder
 }

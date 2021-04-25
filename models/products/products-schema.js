@@ -8,8 +8,8 @@ const productsSchema = mongoose.Schema({
     reviews: String,
     description: String,
     user: {
-        // type: String,
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
+        // type: mongoose.Schema.Types.ObjectId,
         ref: 'UsersModel'
     }
 }, {collection: "products"})
