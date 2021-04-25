@@ -8,7 +8,8 @@ const ordersSchema = mongoose.Schema({
                 image_link: String,
                 price: Number,
                 product: {
-                    type: mongoose.Schema.Types.ObjectId,
+                    type: String,
+                    // type: mongoose.Schema.Types.ObjectId,
                     ref: 'ProductsModel'
                 // name: { type: String, required: true },
                 // qty: { type: Number, required: true },
