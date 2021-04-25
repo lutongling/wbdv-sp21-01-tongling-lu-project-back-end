@@ -18,9 +18,15 @@ const findProductByUserId = (uid) => {
     return productsModel.find({user: uid})
 }
 
+const deleteProduct = (pid) => {
+    console.log(pid)
+    return productsModel.findOneAndDelete({_id: pid})
+}
+
 module.exports = {
     createProduct,
     findProductById,
     findAllProducts,
-    findProductByUserId
+    findProductByUserId,
+    deleteProduct
 }

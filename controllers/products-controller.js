@@ -41,11 +41,18 @@ module.exports = (app) => {
             .then(product => res.send(product))
     }
 
+    const deleteProduct = (req, res) => {
+        const pid = req.body._id
+        productDao.deleteProduct(pid)
+            .then(product => res.send(product))
+    }
+
     app.get('/api/products', findAllProducts)
     app.get('/api/products/:productId', findProductById)
     app.get('/api/products_db', findAllProducts_DB)
     app.get('/api/products_db/:productId', findProductById_DB)
     app.get('/api/products_db/user/:uid', findProductByUserId_DB)
     app.post('/api/products_db', createProduct)
+    app.delete('/api/products_db', deleteProduct)
 
 }
