@@ -47,6 +47,13 @@ module.exports = (app) => {
             .then(product => res.send(product))
     }
 
+    const updateProduct = (req, res) => {
+        const newProduct = req.body;
+        console.log(newProduct)
+        productDao.updateProduct(newProduct._id, newProduct)
+        res.send(newProduct)
+    }
+
     app.get('/api/products', findAllProducts)
     app.get('/api/products/:productId', findProductById)
     app.get('/api/products_db', findAllProducts_DB)
@@ -54,5 +61,6 @@ module.exports = (app) => {
     app.get('/api/products_db/user/:uid', findProductByUserId_DB)
     app.post('/api/products_db', createProduct)
     app.delete('/api/products_db', deleteProduct)
+    app.put('/api/products_db', updateProduct)
 
 }

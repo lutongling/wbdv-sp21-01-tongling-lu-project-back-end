@@ -23,10 +23,19 @@ const deleteProduct = (pid) => {
     return productsModel.findOneAndDelete({_id: pid})
 }
 
+const updateProduct = (pid, newProduct) => {
+    productsModel.findOneAndUpdate({_id: pid}, {$set: newProduct}, {new:true}, function(err,doc) {
+        if (err) { throw err; }
+        else { console.log("Updated Product"); }
+
+    });
+}
+
 module.exports = {
     createProduct,
     findProductById,
     findAllProducts,
     findProductByUserId,
-    deleteProduct
+    deleteProduct,
+    updateProduct
 }
