@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const uri = process.env.MONGODB_URI || "mongodb+srv://lutongling:Shmily960105@cluster0.e6uhf.mongodb.net/treasure_hunter?retryWrites=true&w=majority"
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -14,8 +17,10 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/treasure_hunter',
+mongoose.connect(uri || "mongodb://localhost:27017/treasure_hunter",
                  {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost:27017/treasure_hunter',
+//                  {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Configures CORS
 app.use(function (req, res, next) {
@@ -35,4 +40,5 @@ require("./controllers/products-controller")(app)
 require("./controllers/users-controller")(app)
 require("./controllers/orders-controller")(app)
 
-app.listen(7000);
+const port = process.env.PORT || 7000;
+app.listen(port);
