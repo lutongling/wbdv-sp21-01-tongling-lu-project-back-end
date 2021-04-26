@@ -25,8 +25,15 @@ module.exports = (app) => {
             })
     }
 
+    const deleteOrder = (req, res) => {
+        const oid = req.body._id
+        orderDao.deleteOrder(oid)
+            .then(order => res.send(order))
+    }
 
     app.get("/api/orders", findAllOrders)
     app.get("/api/orders/:uid", findOrdersByUserId)
     app.post("/api/orders", createOrder)
+    app.delete('/api/orders', deleteOrder)
+
 }
