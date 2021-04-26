@@ -21,10 +21,19 @@ const deleteOrder = (oid) => {
     return ordersModel.findOneAndDelete({_id: oid})
 }
 
+const updateOrder = (oid, newOrder) => {
+    ordersModel.findOneAndUpdate({_id: oid}, {$set: newOrder}, {new:true}, function(err,doc) {
+        if (err) { throw err; }
+        else { console.log("Updated Product"); }
+
+    });
+}
+
 module.exports = {
     findAllOrders,
     findOrderById,
     findOrdersByUserId,
     createOrder,
-    deleteOrder
+    deleteOrder,
+    updateOrder
 }

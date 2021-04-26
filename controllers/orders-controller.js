@@ -31,9 +31,17 @@ module.exports = (app) => {
             .then(order => res.send(order))
     }
 
+    const updateOrder = (req, res) => {
+        const newOrder = req.body;
+        console.log(newOrder)
+        orderDao.updateOrder(newOrder._id, newOrder)
+        res.send(newOrder)
+    }
+
     app.get("/api/orders", findAllOrders)
     app.get("/api/orders/:uid", findOrdersByUserId)
     app.post("/api/orders", createOrder)
     app.delete('/api/orders', deleteOrder)
+    app.put('/api/orders', updateOrder)
 
 }
