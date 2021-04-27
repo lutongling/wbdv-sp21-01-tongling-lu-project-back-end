@@ -4,7 +4,6 @@ const app = express()
 const bodyParser = require('body-parser')
 const uri = process.env.MONGODB_URI || "mongodb+srv://lutongling:Shmily960105@cluster0.e6uhf.mongodb.net/treasure_hunter?retryWrites=true&w=majority"
 
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
